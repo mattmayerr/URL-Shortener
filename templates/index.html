@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Shortener</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        input, button { margin: 10px; padding: 10px; }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Simple URL Shortener</h1>
-    <form action="/shorten" method="POST">
-        <input type="url" name="long_url" placeholder="Enter your URL" required>
-        <button type="submit">Shorten</button>
-    </form>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <button id="dark-mode-toggle">🌙 Toggle Dark Mode</button>
+
+        <form action="/shorten" method="post">
+            <input type="url" name="long_url" placeholder="Enter your URL here..." required>
+            <button type="submit">Shorten</button>
+        </form>
+
+        {% if short_url %}
+        <div class="short-url">
+            <p>Shortened URL:</p>
+            <a href="{{ short_url }}" target="_blank">{{ short_url }}</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
