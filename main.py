@@ -31,5 +31,9 @@ def redirect_url(short_code):
         return redirect(result[0])  # Redirects to the original URL
     return "URL not found", 404
 
+@app.route('/')
+def home():
+    return "Hello, World!"
+
 if __name__ == '__main__':
     app.run(debug=True)
